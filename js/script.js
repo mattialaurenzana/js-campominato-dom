@@ -41,7 +41,7 @@ function bombsGenerator(rangeMax){
             bombs.push(oneBomb);
         }
     }
-    return bombs;
+    return bombs; //ritorna l'array
 }
 
 function play(n,counter,array1,array2,endBlock,status){
