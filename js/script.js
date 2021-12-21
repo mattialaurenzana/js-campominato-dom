@@ -47,20 +47,26 @@ function bombsGenerator(rangeMax){
 function play(n,counter,array1,array2,endBlock,status){
     
         for(let i=0; i < n; i++){
-            
                 array1[i].addEventListener('click',function(){
-                    if((status) || (counter === (n - 16))){
+                    counter = document.querySelectorAll('.light-blue').length +1;
+                    if((status) && (counter < (n - 16))){
                         if(array2.includes(i+1)){
                             status = false;
                             array1[i].classList.add('red');
                             endBlock.classList.remove('end');
                             endBlock.classList.add('end1');
+                            counter = document.querySelectorAll('.light-blue').length;
                             results.innerHTML = `punteggio: ${counter}`;
                          }else{
                             array1[i].classList.add('light-blue');
-                            counter ++;
                             results.innerHTML = `punteggio: ${counter}`;
                          }
+                    }else if(counter === (n - 16)){
+                        array1[i].classList.add('light-blue');
+                        results.innerHTML = `punteggio: ${counter}`;
+                        win.classList.remove('win');
+                        win.classList.add('win1');
+                        win.innerHTML = 'HAI VINTO';
                     }
                 
                  })
@@ -79,7 +85,7 @@ const grid = document.getElementById('grid');
 const backButton = document.querySelector('.back');
 const gameOver = document.querySelector('.end');
 const results = document.querySelector('.results');
-
+const win = document.querySelector('.win');
 
 
 let mines = []; //array per contenere le bombe 

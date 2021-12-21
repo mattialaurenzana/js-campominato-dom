@@ -1,6 +1,9 @@
 body{
-    background: url('../img/sfondo-legno.jpg');
+    background: url('../img/war.jpg');
+    background-size: cover;
+
 }
+
 
 .buttons-container{
     position: absolute;
@@ -13,6 +16,10 @@ button{
     margin: 0 15px;
     border-radius: 40px;
     padding: 15px;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    box-shadow: inset 5px 5px white;
 }
 
 .hide{
@@ -58,10 +65,14 @@ button{
     
 }
 
+.win{
+    display: none;
+}
 
-.end1{  
+.win1{
+    display: block;
     font-size: 80px;
-    color: white;
+    color: blue;
     text-shadow: 5px 5px black;
     position: absolute;
     top: 50%;
@@ -69,6 +80,25 @@ button{
     transform: translate(-50%,-50%);
     width: 350px;
     height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.5);
+    text-align: center;
+}
+
+
+.end1{  
+    font-size: 80px;
+    color: blue;
+    border-radius: 50%;
+    text-shadow: 5px 5px black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 350px;
+    height: 250px;
     display: flex;
     justify-content: center;
     align-items: center;
