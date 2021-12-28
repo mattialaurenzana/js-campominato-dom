@@ -11,6 +11,7 @@ function getRandomNumber(min,max){  //funzione che genera un numero randomico tr
 
 function gridGenerator(num,container){  //funzione per la creazione della griglia
     const cells = [];
+    container.innerHTML = "";  //svuoto la griglia precedente
     for(let i=1; i <= num; i++){
         const newBox = document.createElement('div');
         newBox.classList.add('box');
@@ -33,10 +34,10 @@ function hideElements(element1,element2,element3){  //funzione che aggiunge la c
     element3.classList.add('hide');
 }
 
-function bombsGenerator(rangeMax){
+function bombsGenerator(rangeMax){  //funzione che genera un array di numeri (le bombe)
     const bombs = [];
     while(bombs.length < 16){
-        let oneBomb = getRandomNumber(1,rangeMax);
+        let oneBomb = getRandomNumber(1,rangeMax);  //richiamo la funzione per generare i numeri randomicamente
         if(!bombs.includes(oneBomb)){
             bombs.push(oneBomb);
         }
@@ -44,7 +45,7 @@ function bombsGenerator(rangeMax){
     return bombs; //ritorna l'array
 }
 
-function play(n,counter,array1,array2,endBlock,status){
+function play(n,counter,array1,array2,endBlock,status,grid){
     
         for(let i=0; i < n; i++){
                 array1[i].addEventListener('click',function(){
@@ -55,6 +56,7 @@ function play(n,counter,array1,array2,endBlock,status){
                             array1[i].classList.add('red');
                             endBlock.classList.remove('end');
                             endBlock.classList.add('end1');
+                            grid.append(endBlock);
                             counter = document.querySelectorAll('.light-blue').length;
                             results.innerHTML = `punteggio: ${counter}`;
                          }else{
@@ -64,9 +66,11 @@ function play(n,counter,array1,array2,endBlock,status){
                     }else if(counter === (n - 16)){
                         array1[i].classList.add('light-blue');
                         results.innerHTML = `punteggio: ${counter}`;
+                        status = false;
                         win.classList.remove('win');
                         win.classList.add('win1');
                         win.innerHTML = 'HAI VINTO';
+                        grid.append(win);
                     }
                 
                  })
@@ -95,33 +99,28 @@ let playing = true;
 
 
 button1.addEventListener('click',function(){  //evento sul click del bottone livello 1
-    hideElements(button1,button2,button3);  //richiamo la funzione per nascondere gli elemnenti
     gridElements = gridGenerator(100,grid);  //richiamo la funzione per generare la griglia
     mines = bombsGenerator(100);
 
-    play(100,safeCounter,gridElements,mines,gameOver,playing);
+    play(100,safeCounter,gridElements,mines,gameOver,playing,grid);
     results.style.display = 'block';
      
 })
 
 
 button2.addEventListener('click',function(){  //evento sul click del bottone livello 2
-    hideElements(button1,button2,button3);
     gridElements = gridGenerator(81,grid);   //richiamo la funzione per generare la griglia
     mines = bombsGenerator(81);
-    safeCounter = 0;
 
-    play(81,safeCounter,gridElements,mines,gameOver,playing);
+    play(81,safeCounter,gridElements,mines,gameOver,playing,grid);
      results.style.display = 'block';
 })
 
 button3.addEventListener('click',function(){  //evento sul click del bottone livello 3
-    hideElements(button1,button2,button3);
     gridElements = gridGenerator(49,grid);   //richiamo la funzione per generare la griglia
     mines = bombsGenerator(49);
-    safeCounter = 0;
     
-    play(49,safeCounter,gridElements,mines,gameOver,playing);
+    play(49,safeCounter,gridElements,mines,gameOver,playing,grid);
      results.style.display = 'block';
 })
 

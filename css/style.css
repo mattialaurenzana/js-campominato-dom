@@ -6,10 +6,10 @@ body{
 
 
 .buttons-container{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+   position: absolute;
+   top: 30px;
+   left: 30px;
+   z-index: 2;
 }
 
 button{
@@ -34,6 +34,7 @@ button{
     justify-content: center;
     align-items: center;
     background-color: white;
+    font-weight: bold;
 }
 
 #grid{
@@ -53,12 +54,6 @@ button{
     background-color: red;
 }
 
-.back{
-    position: absolute;
-    top: 30px;
-    right: 30px;
-    display: none;
-}
 
 .end{
     display: none;
@@ -91,14 +86,13 @@ button{
 .end1{  
     font-size: 80px;
     color: blue;
-    border-radius: 50%;
     text-shadow: 5px 5px black;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 350px;
-    height: 250px;
+    height: 100vh;
+    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
